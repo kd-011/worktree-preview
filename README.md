@@ -92,6 +92,8 @@ In order of precedence:
 
 Otherwise `wtp up` exits 2 and says what to add.
 
+Treat `wtp up` like `npm run dev`: it runs whatever the worktree's `.worktree-preview.json` or `package.json` says, with your user's permissions and no confirmation. Only point it at checkouts you trust.
+
 The command runs through `/bin/sh -c` with the worktree as its working directory. Its environment gets `PORT`, `WTP_PORT` and `WTP_NAME`, plus the variable named by `port_env` if that is not `PORT`. For tools that want a flag instead of an environment variable, use the variable in the command: `--cmd 'vite --port $PORT'`.
 
 ### `.worktree-preview.json`
