@@ -1,0 +1,30 @@
+# A user unit that ties one preview to a unit's lifetime.
+#
+# Install:  cp wtp@.service ~/.config/systemd/user/ && systemctl --user daemon-reload
+# Start:    systemctl --user start "wtp@$(systemd-escape --path /path/to/worktree).service"
+# Stop:     systemctl --user stop  "wtp@$(systemd-escape --path /path/to/worktree).service"
+#
+# `wtp up` starts the server in its own process group and exits; the server
+# keeps running inside this unit's cgroup (hence RemainAfterExit). Stopping the
+# unit runs `wtp down`, and systemd then sweeps anything left in the cgroup.
+#
+# Notes:
+# - systemd does not search your shell PATH. If `wtp` is not found, replace
+#   /usr/bin/env wtp with the absolute path (see: command -v wtp).
+# - wtp keeps its state under XDG_STATE_HOME (default ~/.local/state), never in
+#   /tmp, so PrivateTmp=yes would not hide it. If you set XDG_STATE_HOME in
+#   your shell, set the same value here with Environment=.
+# - This is not a restarter. If the server crashes, run `wtp up` again.
+
+[Unit]
+Description=worktree-preview for %f
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/env wtp up %f
+ExecStop=/usr/bin/env wtp down %f
+TimeoutStopSec=30
+
+[Install]
+WantedBy=default.target

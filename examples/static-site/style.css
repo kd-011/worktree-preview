@@ -1,0 +1,6 @@
+body {
+  font: 1.125rem/1.5 system-ui, sans-serif;
+  max-width: 32rem;
+  margin: 4rem auto;
+  padding: 0 1rem;
+}

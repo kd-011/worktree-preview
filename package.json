@@ -1,0 +1,36 @@
+{
+  "name": "worktree-preview",
+  "version": "0.1.0",
+  "description": "Serve any git worktree on its own free port with one command, remember it, and tear it down cleanly.",
+  "type": "module",
+  "license": "MIT",
+  "author": "kd-011",
+  "bin": {
+    "worktree-preview": "bin/wtp.js",
+    "wtp": "bin/wtp.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "LICENSE",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "os": [
+    "linux",
+    "darwin"
+  ],
+  "keywords": [
+    "git",
+    "worktree",
+    "preview",
+    "dev-server",
+    "port",
+    "cli"
+  ],
+  "scripts": {
+    "test": "node --test"
+  }
+}

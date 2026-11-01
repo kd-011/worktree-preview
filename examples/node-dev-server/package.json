@@ -1,0 +1,8 @@
+{
+  "name": "example-dev-server",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js"
+  }
+}
