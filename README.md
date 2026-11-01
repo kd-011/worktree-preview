@@ -4,6 +4,8 @@
 
 Node 22, zero npm dependencies, Linux and macOS. Windows is not supported (WSL works).
 
+![wtp up, ls and down --all on two git worktrees](docs/screenshots/terminal.png)
+
 ## 30-second demo
 
 ```console
