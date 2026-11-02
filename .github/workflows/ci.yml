@@ -4,6 +4,11 @@ on:
   push:
     branches: [main]
   pull_request:
+  # A merge made with GITHUB_TOKEN (auto-merge) does not trigger the push run,
+  # so this keeps the badge honest.
+  schedule:
+    - cron: "41 4 * * 1"
+  workflow_dispatch:
 
 permissions:
   contents: read

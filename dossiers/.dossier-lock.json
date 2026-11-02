@@ -1,0 +1,394 @@
+{
+  "version": 1,
+  "docs": {
+    "worktree-preview": {
+      "claims": {
+        "5371d2486e65": {
+          "text": "Runs on Node 22 or newer and has no runtime or development dependencies.",
+          "line": 14,
+          "specs": [
+            "package.json"
+          ],
+          "head": "c455cf3b24f0eb3fdc2ec598865121b24f20a626",
+          "files": {
+            "package.json": {
+              "path": "package.json",
+              "blob": "2448e29f32811fb5e622db49a4b3411c4dde64b3",
+              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c"
+            }
+          }
+        },
+        "248b81d23e6e": {
+          "text": "Installs two commands that point at the same script: `wtp` and `worktree-preview`.",
+          "line": 15,
+          "specs": [
+            "package.json:8-11"
+          ],
+          "head": "c455cf3b24f0eb3fdc2ec598865121b24f20a626",
+          "files": {
+            "package.json": {
+              "path": "package.json",
+              "blob": "2448e29f32811fb5e622db49a4b3411c4dde64b3",
+              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "range": {
+                "start": 8,
+                "end": 11,
+                "hash": "f6bfe7fc7fa664b45f5c0586a8348ca451c51e77"
+              }
+            }
+          }
+        },
+        "b627614254ef": {
+          "text": "The command to run is `--cmd`, then `cmd` in the config file, then a detected one, and with none of those `wtp up` exits with a usage error.",
+          "line": 16,
+          "specs": [
+            "src/commands/up.js:84-90"
+          ],
+          "head": "c455cf3b24f0eb3fdc2ec598865121b24f20a626",
+          "files": {
+            "src/commands/up.js": {
+              "path": "src/commands/up.js",
+              "blob": "98e00944f9f613dba9e75b2002a2ca7db7e3d117",
+              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "range": {
+                "start": 84,
+                "end": 90,
+                "hash": "3dee11173097d01c64c4eba7a12129fea41b0758"
+              }
+            }
+          }
+        },
+        "5114912c4183": {
+          "text": "A `dev` script in `package.json` is run with the package manager its lockfile implies, and a root `index.html` falls back to the built-in static server.",
+          "line": 17,
+          "specs": [
+            "src/detect.js:50-75"
+          ],
+          "head": "c455cf3b24f0eb3fdc2ec598865121b24f20a626",
+          "files": {
+            "src/detect.js": {
+              "path": "src/detect.js",
+              "blob": "62a792555f79e5d1925c3a92645ac9693cb0980c",
+              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "range": {
+                "start": 50,
+                "end": 75,
+                "hash": "e59fcb76ff2c867817d884830aff369d46d1d52f"
+              }
+            }
+          }
+        },
+        "f3cd0642af2a": {
+          "text": "The config file rejects unknown keys instead of ignoring them.",
+          "line": 18,
+          "specs": [
+            "src/detect.js:8",
+            "src/detect.js:32"
+          ],
+          "head": "c455cf3b24f0eb3fdc2ec598865121b24f20a626",
+          "files": {
+            "src/detect.js": {
+              "path": "src/detect.js",
+              "blob": "62a792555f79e5d1925c3a92645ac9693cb0980c",
+              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "range": {
+                "start": 8,
+                "end": 8,
+                "hash": "158cc09a6e46af360a3976d539fda3b45c6edd12"
+              }
+            },
+            "src/detect.js:32-32": {
+              "path": "src/detect.js",
+              "blob": "62a792555f79e5d1925c3a92645ac9693cb0980c",
+              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "range": {
+                "start": 32,
+                "end": 32,
+                "hash": "5c5caddb08ab316c44583653d147aa747d1ec372"
+              }
+            }
+          }
+        },
+        "ccbe796f975a": {
+          "text": "The default port range is 4100-4199, overridable with `WTP_PORT_RANGE`.",
+          "line": 19,
+          "specs": [
+            "src/ports.js:5",
+            "src/ports.js:17-19"
+          ],
+          "head": "c455cf3b24f0eb3fdc2ec598865121b24f20a626",
+          "files": {
+            "src/ports.js": {
+              "path": "src/ports.js",
+              "blob": "6bd92fc421f2e53ebccef0acb48e4692398cbe60",
+              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "range": {
+                "start": 5,
+                "end": 5,
+                "hash": "d8b32d690d40566ad514f2355c687e4bc08b9343"
+              }
+            },
+            "src/ports.js:17-19": {
+              "path": "src/ports.js",
+              "blob": "6bd92fc421f2e53ebccef0acb48e4692398cbe60",
+              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "range": {
+                "start": 17,
+                "end": 19,
+                "hash": "c41050e3b40d13b2ee03f00896b8d54102ccdc9c"
+              }
+            }
+          }
+        },
+        "ecefc03a2774": {
+          "text": "The starting port comes from a hash of the worktree path, then moves forward one port at a time and wraps around the range.",
+          "line": 20,
+          "specs": [
+            "src/ports.js:25-29"
+          ],
+          "head": "c455cf3b24f0eb3fdc2ec598865121b24f20a626",
+          "files": {
+            "src/ports.js": {
+              "path": "src/ports.js",
+              "blob": "6bd92fc421f2e53ebccef0acb48e4692398cbe60",
+              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "range": {
+                "start": 25,
+                "end": 29,
+                "hash": "5aaffc8392e377253bf63ef0404d40c7ffbf84f2"
+              }
+            }
+          }
+        },
+        "3674bea8921a": {
+          "text": "An explicit `--port` that is taken fails instead of shifting to another port.",
+          "line": 21,
+          "specs": [
+            "src/commands/up.js:98-108"
+          ],
+          "head": "c455cf3b24f0eb3fdc2ec598865121b24f20a626",
+          "files": {
+            "src/commands/up.js": {
+              "path": "src/commands/up.js",
+              "blob": "98e00944f9f613dba9e75b2002a2ca7db7e3d117",
+              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "range": {
+                "start": 98,
+                "end": 108,
+                "hash": "5d66786c2c9e9dac8e12d9db4d49211a2b0b9f39"
+              }
+            }
+          }
+        },
+        "a3e42f8f75ba": {
+          "text": "A preview counts as ready when it answers over HTTP with any status below 500, tried on IPv4 loopback first and then IPv6.",
+          "line": 22,
+          "specs": [
+            "src/ready.js:9-12",
+            "src/ready.js:25"
+          ],
+          "head": "c455cf3b24f0eb3fdc2ec598865121b24f20a626",
+          "files": {
+            "src/ready.js": {
+              "path": "src/ready.js",
+              "blob": "ed321dfbc3c88d65acf05a0f3e36cd71f848c6f5",
+              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "range": {
+                "start": 9,
+                "end": 12,
+                "hash": "ae1cbb32717a1b390aca8191238267672f00734d"
+              }
+            },
+            "src/ready.js:25-25": {
+              "path": "src/ready.js",
+              "blob": "ed321dfbc3c88d65acf05a0f3e36cd71f848c6f5",
+              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "range": {
+                "start": 25,
+                "end": 25,
+                "hash": "b05e49cd41d993f93a1325ac44fe9d8d48c153a5"
+              }
+            }
+          }
+        },
+        "aa6d140c9d25": {
+          "text": "Stopping a preview sends SIGTERM to its whole process group, then SIGKILL after a grace period that defaults to 5000 ms.",
+          "line": 26,
+          "specs": [
+            "src/proc.js:18-22",
+            "src/proc.js:150-159"
+          ],
+          "head": "c455cf3b24f0eb3fdc2ec598865121b24f20a626",
+          "files": {
+            "src/proc.js": {
+              "path": "src/proc.js",
+              "blob": "847fef9c7e3a76aeeae6391212c95dc274de367b",
+              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "range": {
+                "start": 18,
+                "end": 22,
+                "hash": "fab1590d4538d431bdd2a45240c8f36cc8a00975"
+              }
+            },
+            "src/proc.js:150-159": {
+              "path": "src/proc.js",
+              "blob": "847fef9c7e3a76aeeae6391212c95dc274de367b",
+              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "range": {
+                "start": 150,
+                "end": 159,
+                "hash": "c9e391783c22ac7051889e7e89c885139430f9fa"
+              }
+            }
+          }
+        },
+        "2fe39c8e52ec": {
+          "text": "A signal is sent only if the recorded start time, command line and process group match the live process. Otherwise the pid is left alone.",
+          "line": 27,
+          "specs": [
+            "src/proc.js:117-122",
+            "src/proc.js:164-167"
+          ],
+          "head": "c455cf3b24f0eb3fdc2ec598865121b24f20a626",
+          "files": {
+            "src/proc.js": {
+              "path": "src/proc.js",
+              "blob": "847fef9c7e3a76aeeae6391212c95dc274de367b",
+              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "range": {
+                "start": 117,
+                "end": 122,
+                "hash": "e9265e5895a330dbaf51509741984d56319f641e"
+              }
+            },
+            "src/proc.js:164-167": {
+              "path": "src/proc.js",
+              "blob": "847fef9c7e3a76aeeae6391212c95dc274de367b",
+              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "range": {
+                "start": 164,
+                "end": 167,
+                "hash": "eb54c7fec18c617258b6bd115c8294116e737695"
+              }
+            }
+          }
+        },
+        "475cce72f732": {
+          "text": "The static server refuses `..` segments, `.git` paths and symlinks that lead outside the served tree.",
+          "line": 28,
+          "specs": [
+            "src/static-server.js:68-83"
+          ],
+          "head": "c455cf3b24f0eb3fdc2ec598865121b24f20a626",
+          "files": {
+            "src/static-server.js": {
+              "path": "src/static-server.js",
+              "blob": "7cf27846008b5afdbf7c88d21d1d44c109d75a0b",
+              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "range": {
+                "start": 68,
+                "end": 83,
+                "hash": "19ef65d0e84c804841e2bc0db1f52ec957af266f"
+              }
+            }
+          }
+        },
+        "b5d86298f242": {
+          "text": "State is kept under the XDG state directory with owner-only permissions, because recorded command lines can hold secrets.",
+          "line": 29,
+          "specs": [
+            "src/state.js:11-15",
+            "src/state.js:27-28",
+            "src/state.js:70"
+          ],
+          "head": "c455cf3b24f0eb3fdc2ec598865121b24f20a626",
+          "files": {
+            "src/state.js": {
+              "path": "src/state.js",
+              "blob": "73302c3aa202da832441c4e1cca97d4264a4b3c5",
+              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "range": {
+                "start": 11,
+                "end": 15,
+                "hash": "515ddf48c55e7fdd1d026febf5e9c1f42dabeaa2"
+              }
+            },
+            "src/state.js:27-28": {
+              "path": "src/state.js",
+              "blob": "73302c3aa202da832441c4e1cca97d4264a4b3c5",
+              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "range": {
+                "start": 27,
+                "end": 28,
+                "hash": "afd0398ff962bca3273394d88886ac37879ec5cd"
+              }
+            },
+            "src/state.js:70-70": {
+              "path": "src/state.js",
+              "blob": "73302c3aa202da832441c4e1cca97d4264a4b3c5",
+              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "range": {
+                "start": 70,
+                "end": 70,
+                "hash": "1c6ac4a1b00c120fe25bfbd7b731e871566df719"
+              }
+            }
+          }
+        },
+        "76656fcc3c80": {
+          "text": "Exit codes are 0 for success, 1 for failure, 2 for usage errors and 3 when the path is not a git worktree.",
+          "line": 30,
+          "specs": [
+            "src/errors.js:1"
+          ],
+          "head": "c455cf3b24f0eb3fdc2ec598865121b24f20a626",
+          "files": {
+            "src/errors.js": {
+              "path": "src/errors.js",
+              "blob": "af1839bfff02f9ef578dca564489c11f3ca5fed0",
+              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "range": {
+                "start": 1,
+                "end": 1,
+                "hash": "d99e5326be8355ca294269f762259625be05c149"
+              }
+            }
+          }
+        },
+        "4e8a6716e31e": {
+          "text": "CI runs `node --test` on Linux and macOS for every pull request and once a week.",
+          "line": 34,
+          "specs": [
+            ".github/workflows/ci.yml:3-11",
+            ".github/workflows/ci.yml:24"
+          ],
+          "head": "c455cf3b24f0eb3fdc2ec598865121b24f20a626",
+          "files": {
+            ".github/workflows/ci.yml": {
+              "path": ".github/workflows/ci.yml",
+              "blob": "3c3d9052250518cfcb87908a3dfb502dd14089de",
+              "commit": "4dfd335ed5bf55a6f35b2fd3dea497d75e032e69",
+              "range": {
+                "start": 3,
+                "end": 11,
+                "hash": "ac6e1b5b218194a3e1f586f50ca6f80c930d2abe"
+              }
+            },
+            ".github/workflows/ci.yml:24-24": {
+              "path": ".github/workflows/ci.yml",
+              "blob": "3c3d9052250518cfcb87908a3dfb502dd14089de",
+              "commit": "4dfd335ed5bf55a6f35b2fd3dea497d75e032e69",
+              "range": {
+                "start": 24,
+                "end": 24,
+                "hash": "251d2e648ddb48d53d1fc1d38e25655208b71a3e"
+              }
+            }
+          }
+        }
+      },
+      "pinnedAt": "2026-11-02T13:34:41.677Z",
+      "head": "c455cf3b24f0eb3fdc2ec598865121b24f20a626"
+    }
+  }
+}

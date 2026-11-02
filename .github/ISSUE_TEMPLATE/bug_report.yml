@@ -1,0 +1,24 @@
+name: Bug report
+description: Something behaves differently from the README
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: The command you ran and its full output. `wtp doctor` output helps.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version and platform
+      description: "Output of `node --version`, plus Linux or macOS and the package version."
+    validations:
+      required: true

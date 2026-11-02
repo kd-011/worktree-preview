@@ -1,5 +1,7 @@
 # worktree-preview
 
+[![ci](https://github.com/kd-011/worktree-preview/actions/workflows/ci.yml/badge.svg)](https://github.com/kd-011/worktree-preview/actions/workflows/ci.yml)
+
 `wtp` serves any git worktree on its own free port with one command, remembers it, and tears it down cleanly, killing exactly the processes it started and nothing else. It exists for people who keep several worktrees alive at once (one per feature branch, and increasingly one per AI coding agent) and want to look at all of them running side by side without port clashes, forgotten dev servers or half-dead process trees.
 
 Node 22, zero npm dependencies, Linux and macOS. Windows is not supported (WSL works).
