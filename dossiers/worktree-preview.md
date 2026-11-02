@@ -7,7 +7,7 @@ last_verified: 2026-11-02
 tags: [cli, node, git]
 ---
 
-A command line tool, `wtp`, that serves a git worktree on its own free port, remembers it, and stops exactly what it started. These claims are the README's main promises, each tied to the code that keeps it.
+`wtp` is a command line tool that serves a git worktree on its own free port, remembers it, and stops exactly what it started. Each claim below is tied to the code that backs it.
 
 ## Features
 
@@ -24,7 +24,7 @@ A command line tool, `wtp`, that serves a git worktree on its own free port, rem
 ## Architecture
 
 - Stopping a preview sends SIGTERM to its whole process group, then SIGKILL after a grace period that defaults to 5000 ms. <!-- src: src/proc.js:18-22, src/proc.js:150-159 -->
-- A signal is sent only if the recorded start time, command line and process group match the live process. Otherwise the pid is left alone. <!-- src: src/proc.js:117-122, src/proc.js:164-167 -->
+- A signal goes out only if the recorded start time, command line and process group match, or the leader is gone and its group still has members. <!-- src: src/proc.js:117-127, src/proc.js:164-167 -->
 - The static server refuses `..` segments, `.git` paths and symlinks that lead outside the served tree. <!-- src: src/static-server.js:68-83 -->
 - State is kept under the XDG state directory with owner-only permissions, because recorded command lines can hold secrets. <!-- src: src/state.js:11-15, src/state.js:27-28, src/state.js:70 -->
 - Exit codes are 0 for success, 1 for failure, 2 for usage errors and 3 when the path is not a git worktree. <!-- src: src/errors.js:1 -->

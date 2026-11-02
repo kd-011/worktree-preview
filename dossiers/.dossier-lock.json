@@ -9,7 +9,7 @@
           "specs": [
             "package.json"
           ],
-          "head": "c455cf3b24f0eb3fdc2ec598865121b24f20a626",
+          "head": "0ca092802e1f7b0e7f69a75053fac063347d1a52",
           "files": {
             "package.json": {
               "path": "package.json",
@@ -24,7 +24,7 @@
           "specs": [
             "package.json:8-11"
           ],
-          "head": "c455cf3b24f0eb3fdc2ec598865121b24f20a626",
+          "head": "0ca092802e1f7b0e7f69a75053fac063347d1a52",
           "files": {
             "package.json": {
               "path": "package.json",
@@ -44,7 +44,7 @@
           "specs": [
             "src/commands/up.js:84-90"
           ],
-          "head": "c455cf3b24f0eb3fdc2ec598865121b24f20a626",
+          "head": "0ca092802e1f7b0e7f69a75053fac063347d1a52",
           "files": {
             "src/commands/up.js": {
               "path": "src/commands/up.js",
@@ -64,7 +64,7 @@
           "specs": [
             "src/detect.js:50-75"
           ],
-          "head": "c455cf3b24f0eb3fdc2ec598865121b24f20a626",
+          "head": "0ca092802e1f7b0e7f69a75053fac063347d1a52",
           "files": {
             "src/detect.js": {
               "path": "src/detect.js",
@@ -85,7 +85,7 @@
             "src/detect.js:8",
             "src/detect.js:32"
           ],
-          "head": "c455cf3b24f0eb3fdc2ec598865121b24f20a626",
+          "head": "0ca092802e1f7b0e7f69a75053fac063347d1a52",
           "files": {
             "src/detect.js": {
               "path": "src/detect.js",
@@ -116,7 +116,7 @@
             "src/ports.js:5",
             "src/ports.js:17-19"
           ],
-          "head": "c455cf3b24f0eb3fdc2ec598865121b24f20a626",
+          "head": "0ca092802e1f7b0e7f69a75053fac063347d1a52",
           "files": {
             "src/ports.js": {
               "path": "src/ports.js",
@@ -146,7 +146,7 @@
           "specs": [
             "src/ports.js:25-29"
           ],
-          "head": "c455cf3b24f0eb3fdc2ec598865121b24f20a626",
+          "head": "0ca092802e1f7b0e7f69a75053fac063347d1a52",
           "files": {
             "src/ports.js": {
               "path": "src/ports.js",
@@ -166,7 +166,7 @@
           "specs": [
             "src/commands/up.js:98-108"
           ],
-          "head": "c455cf3b24f0eb3fdc2ec598865121b24f20a626",
+          "head": "0ca092802e1f7b0e7f69a75053fac063347d1a52",
           "files": {
             "src/commands/up.js": {
               "path": "src/commands/up.js",
@@ -187,7 +187,7 @@
             "src/ready.js:9-12",
             "src/ready.js:25"
           ],
-          "head": "c455cf3b24f0eb3fdc2ec598865121b24f20a626",
+          "head": "0ca092802e1f7b0e7f69a75053fac063347d1a52",
           "files": {
             "src/ready.js": {
               "path": "src/ready.js",
@@ -218,7 +218,7 @@
             "src/proc.js:18-22",
             "src/proc.js:150-159"
           ],
-          "head": "c455cf3b24f0eb3fdc2ec598865121b24f20a626",
+          "head": "0ca092802e1f7b0e7f69a75053fac063347d1a52",
           "files": {
             "src/proc.js": {
               "path": "src/proc.js",
@@ -242,14 +242,14 @@
             }
           }
         },
-        "2fe39c8e52ec": {
-          "text": "A signal is sent only if the recorded start time, command line and process group match the live process. Otherwise the pid is left alone.",
+        "ce01bf09f1c4": {
+          "text": "A signal goes out only if the recorded start time, command line and process group match, or the leader is gone and its group still has members.",
           "line": 27,
           "specs": [
-            "src/proc.js:117-122",
+            "src/proc.js:117-127",
             "src/proc.js:164-167"
           ],
-          "head": "c455cf3b24f0eb3fdc2ec598865121b24f20a626",
+          "head": "0ca092802e1f7b0e7f69a75053fac063347d1a52",
           "files": {
             "src/proc.js": {
               "path": "src/proc.js",
@@ -257,8 +257,8 @@
               "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
               "range": {
                 "start": 117,
-                "end": 122,
-                "hash": "e9265e5895a330dbaf51509741984d56319f641e"
+                "end": 127,
+                "hash": "842ef4c8db07fb5629bfdccd9a0e951579ec4d84"
               }
             },
             "src/proc.js:164-167": {
@@ -279,7 +279,7 @@
           "specs": [
             "src/static-server.js:68-83"
           ],
-          "head": "c455cf3b24f0eb3fdc2ec598865121b24f20a626",
+          "head": "0ca092802e1f7b0e7f69a75053fac063347d1a52",
           "files": {
             "src/static-server.js": {
               "path": "src/static-server.js",
@@ -301,7 +301,7 @@
             "src/state.js:27-28",
             "src/state.js:70"
           ],
-          "head": "c455cf3b24f0eb3fdc2ec598865121b24f20a626",
+          "head": "0ca092802e1f7b0e7f69a75053fac063347d1a52",
           "files": {
             "src/state.js": {
               "path": "src/state.js",
@@ -341,7 +341,7 @@
           "specs": [
             "src/errors.js:1"
           ],
-          "head": "c455cf3b24f0eb3fdc2ec598865121b24f20a626",
+          "head": "0ca092802e1f7b0e7f69a75053fac063347d1a52",
           "files": {
             "src/errors.js": {
               "path": "src/errors.js",
@@ -362,12 +362,12 @@
             ".github/workflows/ci.yml:3-11",
             ".github/workflows/ci.yml:24"
           ],
-          "head": "c455cf3b24f0eb3fdc2ec598865121b24f20a626",
+          "head": "0ca092802e1f7b0e7f69a75053fac063347d1a52",
           "files": {
             ".github/workflows/ci.yml": {
               "path": ".github/workflows/ci.yml",
-              "blob": "3c3d9052250518cfcb87908a3dfb502dd14089de",
-              "commit": "4dfd335ed5bf55a6f35b2fd3dea497d75e032e69",
+              "blob": "e361a6f6e095267f18352020bd1ae54770313d9d",
+              "commit": "0ca092802e1f7b0e7f69a75053fac063347d1a52",
               "range": {
                 "start": 3,
                 "end": 11,
@@ -376,8 +376,8 @@
             },
             ".github/workflows/ci.yml:24-24": {
               "path": ".github/workflows/ci.yml",
-              "blob": "3c3d9052250518cfcb87908a3dfb502dd14089de",
-              "commit": "4dfd335ed5bf55a6f35b2fd3dea497d75e032e69",
+              "blob": "e361a6f6e095267f18352020bd1ae54770313d9d",
+              "commit": "0ca092802e1f7b0e7f69a75053fac063347d1a52",
               "range": {
                 "start": 24,
                 "end": 24,
@@ -387,8 +387,8 @@
           }
         }
       },
-      "pinnedAt": "2026-11-02T13:34:41.677Z",
-      "head": "c455cf3b24f0eb3fdc2ec598865121b24f20a626"
+      "pinnedAt": "2026-11-02T15:29:01.596Z",
+      "head": "0ca092802e1f7b0e7f69a75053fac063347d1a52"
     }
   }
 }

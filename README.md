@@ -2,7 +2,7 @@
 
 [![ci](https://github.com/kd-011/worktree-preview/actions/workflows/ci.yml/badge.svg)](https://github.com/kd-011/worktree-preview/actions/workflows/ci.yml)
 
-`wtp` serves any git worktree on its own free port with one command, remembers it, and tears it down cleanly, killing exactly the processes it started and nothing else. It exists for people who keep several worktrees alive at once (one per feature branch, and increasingly one per AI coding agent) and want to look at all of them running side by side without port clashes, forgotten dev servers or half-dead process trees.
+`wtp` serves a git worktree on its own free port with one command, remembers it, and stops it again. It only ever kills processes it started. It is for people who keep several worktrees alive at once (one per feature branch, and lately one per coding agent) and want them running side by side without port clashes, forgotten dev servers or half-dead process trees.
 
 Node 22, zero npm dependencies, Linux and macOS. Windows is not supported (WSL works).
 
@@ -32,17 +32,17 @@ stopped app-login
 stopped app-billing
 ```
 
-`wtp up` only prints the URL (on stdout) once the server really answers. The server runs inside the worktree itself, so an edit you save is what the next request sees.
+`wtp up` prints the URL on stdout once the server answers. The server runs in the worktree itself, so the next request sees whatever you just saved.
 
 ## Install
 
-There is nothing to install but the code. Clone the repository and link it:
+Clone the repository and link it:
 
 ```sh
 npm link        # provides `wtp` and `worktree-preview`
 ```
 
-or run `node bin/wtp.js` directly. `wtp doctor` checks your setup.
+Or run `node bin/wtp.js` directly. `wtp doctor` checks your setup.
 
 ## Commands
 
@@ -55,7 +55,7 @@ or run `node bin/wtp.js` directly. `wtp doctor` checks your setup.
 | `wtp gc [--worktrees-gone]` | Remove dead entries and orphaned log files. With `--worktrees-gone`, also stop previews whose worktree directory no longer exists. |
 | `wtp doctor` | Check git and node versions, that the state directory is writable, and how many ports of the range are free. |
 
-`path` must be inside a git worktree or the main checkout; a subdirectory resolves to the worktree root.
+`path` must be inside a git worktree or the main checkout. A subdirectory resolves to the worktree root.
 
 ### Exit codes
 
@@ -83,7 +83,7 @@ or run `node bin/wtp.js` directly. `wtp doctor` checks your setup.
 }
 ```
 
-`ls --json` entries carry `name`, `branch`, `worktree_missing`, `path`, `port`, `pid`, `pgid`, `uptime_seconds`, `url`, `state` and `log`. Human messages always go to stderr, so stdout is safe to parse.
+`ls --json` entries carry `name`, `branch`, `worktree_missing`, `path`, `port`, `pid`, `pgid`, `uptime_seconds`, `url`, `state` and `log`. Messages for people go to stderr, so stdout is safe to parse.
 
 ## What command runs
 
@@ -94,11 +94,11 @@ In order of precedence:
 3. A `dev` script in `package.json`, run with the package manager its lockfile implies (`pnpm-lock.yaml` gives `pnpm run dev`, `yarn.lock` gives `yarn run dev`, `bun.lock`/`bun.lockb` gives `bun run dev`, otherwise `npm run dev`)
 4. If the root has an `index.html`, a built-in static file server (correct MIME types, no caching, no directory listings, no path traversal, serves the live files)
 
-Otherwise `wtp up` exits 2 and says what to add.
+If none of these apply, `wtp up` exits 2 and says what to add.
 
-Treat `wtp up` like `npm run dev`: it runs whatever the worktree's `.worktree-preview.json` or `package.json` says, with your user's permissions and no confirmation. Only point it at checkouts you trust.
+`wtp up` is as trusting as `npm run dev`. It runs whatever the worktree's `.worktree-preview.json` or `package.json` says, with your permissions and no confirmation. Only point it at checkouts you trust.
 
-The command runs through `/bin/sh -c` with the worktree as its working directory. Its environment gets `PORT`, `WTP_PORT` and `WTP_NAME`, plus the variable named by `port_env` if that is not `PORT`. For tools that want a flag instead of an environment variable, use the variable in the command: `--cmd 'vite --port $PORT'`.
+The command runs through `/bin/sh -c` in the worktree. Its environment has `PORT`, `WTP_PORT` and `WTP_NAME`, plus the variable named by `port_env` if that is not `PORT`. If a tool wants a flag instead, put the variable in the command: `--cmd 'vite --port $PORT'`.
 
 ### `.worktree-preview.json`
 
@@ -106,7 +106,7 @@ The command runs through `/bin/sh -c` with the worktree as its working directory
 { "cmd": "npm run dev", "port_env": "PORT", "ready_path": "/", "ready_timeout": 60 }
 ```
 
-All keys are optional. Unknown keys are an error, so typos do not pass silently.
+All keys are optional. Unknown keys are an error, so a typo gets caught.
 
 | Key | Default | Meaning |
 | --- | --- | --- |
@@ -117,17 +117,17 @@ All keys are optional. Unknown keys are an error, so typos do not pass silently.
 
 ### Ports
 
-The range is 4100-4199 (override with `WTP_PORT_RANGE=LOW-HIGH`). The starting port is derived from a hash of the worktree path, so the same worktree gets the same port whenever it is free, and different worktrees spread out. If it is taken, wtp falls forward one port at a time, wrapping around the range. `--port N` is different: it is a demand, so if N is in use `wtp up` fails with exit 1 and starts nothing.
+The range is 4100-4199 (override with `WTP_PORT_RANGE=LOW-HIGH`). The starting port comes from a hash of the worktree path, so a worktree gets the same port each time when it is free and different worktrees spread out. If the port is taken, wtp moves forward one at a time, wrapping around the range. `--port N` never moves: if N is in use, `wtp up` exits 1 and starts nothing.
 
-A port counts as free only if wtp can bind it on every address family and nothing accepts connections on it, and that check is repeated immediately before the server is spawned.
+A port is free only if wtp can bind it on every address family and nothing accepts connections on it. wtp checks again just before it spawns the server.
 
 ### Readiness
 
-The server is ready when a TCP connection to the port works and `GET ready_path` returns any status below 500 (a 404 counts: it proves something is serving). If the process dies first, `wtp up` fails at once. If `--wait` seconds pass first, it fails with a message that points at `port_env`, which is almost always the cause when a dev server ignores `PORT` and listens somewhere else. In both cases it stops what it started, prints the last 20 lines of the log on stderr, and exits 1.
+The server is ready when a TCP connection to the port works and `GET ready_path` returns any status below 500. A 404 counts, since something is answering. If the process dies first, `wtp up` fails at once. If `--wait` seconds pass first, it fails with a message pointing at `port_env`, which is nearly always the cause when a dev server ignores `PORT` and listens elsewhere. Either way it stops what it started, prints the last 20 lines of the log on stderr and exits 1.
 
 ## Promises
 
-These are the guarantees, and the test that holds each one in place. `node --test` runs them all against real git worktrees and real servers.
+Each guarantee and the test behind it. `node --test` runs them all against real git worktrees and real servers.
 
 | Promise | Test |
 | --- | --- |
@@ -154,15 +154,15 @@ logs/<name>.log        the preview's stdout and stderr
 lock                   held briefly while choosing a port and spawning
 ```
 
-An entry holds `name`, `path`, `branch`, `port`, `pid`, `pgid`, `start_time`, `cmdline`, `cmd`, `started_at`, `log` and `status`. `start_time` is read from `/proc/<pid>/stat` on Linux and `ps -o lstart=` on macOS. The directory and files are private to your user, because command lines can contain secrets.
+An entry has `name`, `path`, `branch`, `port`, `pid`, `pgid`, `start_time`, `cmdline`, `cmd`, `started_at`, `log` and `status`. `start_time` is read from `/proc/<pid>/stat` on Linux and `ps -o lstart=` on macOS. The directory and files are private to your user, since command lines can contain secrets.
 
-State is deliberately not under `/tmp`. A systemd unit with `PrivateTmp=yes` (and every transient unit started with it) gets its own private `/tmp`, so state and logs written there are invisible from your shell. Under the XDG state directory, a preview started from a unit, a terminal or a script is visible to all of them. If you set `XDG_STATE_HOME` in your shell profile only, set the same value for the unit.
+State stays out of `/tmp` on purpose. A systemd unit with `PrivateTmp=yes` gets its own `/tmp`, so state and logs written there are invisible from your shell. Under the XDG state directory, a preview started from a unit, a terminal or a script is visible to all of them. If you set `XDG_STATE_HOME` only in your shell profile, set the same value for the unit.
 
-`wtp down` removes the preview's log. A preview that died on its own keeps its log until `wtp gc`, so you can still read why with `wtp logs <name>`.
+`wtp down` removes the preview's log. A preview that died on its own keeps its log until `wtp gc`, so `wtp logs <name>` can still tell you why.
 
 ### Running under systemd
 
-`examples/systemd/wtp@.service` is a user unit that ties a preview to a unit's lifetime:
+`examples/systemd/wtp@.service` is a user unit that ties a preview to the unit's lifetime:
 
 ```sh
 cp examples/systemd/wtp@.service ~/.config/systemd/user/
@@ -171,11 +171,11 @@ systemctl --user start "wtp@$(systemd-escape --path /path/to/worktree).service"
 systemctl --user stop  "wtp@$(systemd-escape --path /path/to/worktree).service"
 ```
 
-`wtp up` exits once the server is ready, and the server keeps running in the unit's cgroup (`RemainAfterExit=yes`). Stopping the unit runs `wtp down`, and systemd then sweeps whatever is left in the cgroup. This was exercised with a transient unit that had `PrivateTmp=yes`: the preview was visible from a normal shell, and stopping the unit left no process behind. It is not a restarter; if the server crashes, run `wtp up` again.
+`wtp up` exits once the server is ready, and the server keeps running in the unit's cgroup (`RemainAfterExit=yes`). Stopping the unit runs `wtp down`, and systemd sweeps whatever is left in the cgroup. I tried it with a transient unit that had `PrivateTmp=yes`: the preview was visible from a normal shell, and stopping the unit left no process behind. The unit does not restart anything. If the server crashes, run `wtp up` again.
 
 ## AI agents
 
-Give each agent its own worktree and its own preview, so you can watch every branch running at once:
+Give each agent its own worktree and preview, and you can watch every branch running at once:
 
 ```sh
 # one worktree and one preview per agent task
@@ -195,23 +195,23 @@ wtp down --all
 wtp gc --worktrees-gone
 ```
 
-Properties that matter for unattended use:
+For unattended use:
 
 - `wtp up` is idempotent, so an agent can call it every time without checking first.
-- A preview survives the agent's shell exiting; there is no orphaned dev server problem, because `wtp ls` shows every one and `wtp down --all` stops every one.
-- `wtp up` exits 1 with the log tail on stderr when the server will not start, so a failed start is a failed command, not a silent hang.
+- A preview survives the agent's shell exiting. `wtp ls` lists every one and `wtp down --all` stops every one, so nothing gets orphaned.
+- When the server will not start, `wtp up` exits 1 with the log tail on stderr. A failed start is a failed command, not a hang.
 - Pass `--wait` for slow builds, or set `ready_timeout` in the config so every agent gets the same value.
 
 ## Limits
 
-- Linux and macOS only. The macOS code path (`ps` instead of `/proc`) is covered by the CI matrix rather than by the author's daily use.
-- A preview is addressed on `localhost` and registered per user. There is no web UI, daemon, tunnel, reverse proxy or subdomain routing.
-- The command must stay in the foreground. A command that backgrounds the real server and exits (`server &`) looks like a process that died, and `wtp up` fails.
-- Readiness is an HTTP check. A server that does not speak HTTP never becomes ready.
-- wtp can only reap what stays in the process group it created. A server that deliberately escapes it (`setsid`, double fork) is not covered; `down` warns if the port is still held afterwards and does not touch the escapee.
-- A command that `exec`s a different program changes the command line wtp recorded. wtp refreshes the record when the server becomes ready, so this works, but a `down` issued in the first moments of a start may decline to stop it and tell you why.
-- Between the port check and the server binding it there is a short window in which another process could take the port. The readiness check then fails or sees the other process, and `wtp up` reports it.
-- The static server is a convenience for plain HTML, not a production server.
+- Linux and macOS only. The macOS code path (`ps` instead of `/proc`) is covered by the CI matrix. I don't use it daily.
+- Previews live on `localhost` and are registered per user. There is no web UI, daemon, tunnel, reverse proxy or subdomain routing.
+- The command must stay in the foreground. One that backgrounds the real server and exits (`server &`) looks like a dead process, and `wtp up` fails.
+- Readiness is an HTTP check, so a server that does not speak HTTP never becomes ready.
+- wtp can only reap what stays in the process group it created. A server that escapes it (`setsid`, double fork) is not covered. `down` warns if the port is still held afterwards and leaves the escapee alone.
+- A command that `exec`s a different program changes the command line wtp recorded. wtp refreshes the record when the server becomes ready, so this works. A `down` in the first moments of a start may decline to stop it and tell you why.
+- Another process could take the port in the short gap between the port check and the server binding it. The readiness check then fails or sees the other process, and `wtp up` reports it.
+- The static server is for plain HTML. Don't use it in production.
 
 ## Environment
 
@@ -229,4 +229,4 @@ MIT, copyright (c) 2026 kd-011. See `LICENSE`.
 
 ## Contributing
 
-See `CONTRIBUTING.md`: sign off your commits (DCO), no CLA, and add a test that fails without your change.
+See `CONTRIBUTING.md`. Sign off your commits (DCO), there is no CLA, and add a test that fails without your change.

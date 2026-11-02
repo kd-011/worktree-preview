@@ -1,19 +1,19 @@
 # Changelog
 
-All notable changes are listed here, newest first. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses [semantic versioning](https://semver.org/).
+Changes are listed newest first. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses [semantic versioning](https://semver.org/).
 
 ## Unreleased
 
 ### Added
 
-- Weekly Dependabot updates for GitHub Actions, grouped by minor and patch with a seven-day cooldown, and auto-merge once the required checks pass.
-- A weekly upkeep workflow that checks README links and the project's own dossier, and opens one issue per problem.
-- A dossier for this repository with a committed lock file.
-- Security policy, code of conduct, issue and pull request templates.
+- Weekly Dependabot updates for GitHub Actions, grouped by minor and patch, with a seven-day cooldown. They auto-merge once the required checks pass.
+- A weekly upkeep workflow that checks the README links and the project's dossier. It opens one issue per problem.
+- A dossier for this repository, with a committed lock file.
+- A security policy, a code of conduct, and issue and pull request templates.
 
 ### Changed
 
-- CI also runs once a week, so the badge reflects the current state of `main`.
+- CI also runs once a week, so the badge shows the current state of `main`.
 
 ## 0.1.0
 
