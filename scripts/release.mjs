@@ -32,13 +32,7 @@ export function compare(a, b) {
   return 0;
 }
 
-/**
- * What is left to do for `version`.
- * @param {string} version  from package.json
- * @param {string[]} published  every version npm has, pre-releases included
- * @param {boolean} releaseExists  whether the v<version> GitHub Release (and so the tag) exists
- * @param {boolean} hasToken  whether an npm token is available (default true)
- */
+/** What is left to do for `version`. `published` is every version npm has, pre-releases included. */
 export function planRelease(version, published, releaseExists, hasToken = true) {
   if (!STABLE.test(version)) {
     throw new Error(`version "${version}" is not x.y.z. Pre-release and build versions are not published by this workflow.`);

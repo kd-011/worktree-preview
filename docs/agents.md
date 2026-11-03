@@ -25,7 +25,7 @@ For unattended use:
 - A fresh worktree has no `node_modules`. Pass `--install` (or set `"install": true` in `.worktree-preview.json`) so the first `wtp up` installs before it starts.
 - `wtp up` is idempotent, so an agent can call it every time without checking first.
 - A preview survives the agent's shell exiting. `wtp ls` lists every one and `wtp down --all` stops every one, so nothing gets orphaned.
-- When the server will not start, `wtp up` exits 1 with the log tail on stderr. A failed start is a failed command, not a hang.
+- When the server will not start, `wtp up` exits 1 with the log tail on stderr instead of hanging.
 - Pass `--wait` for slow builds, or set `ready_timeout` in the config so every agent gets the same value.
 
 ## Running under systemd

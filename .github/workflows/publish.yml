@@ -1,25 +1,14 @@
 # Publishes to npm and cuts the GitHub Release when a merge to main raises the version in package.json.
 #
-# To release: put a "## [x.y.z]" section in CHANGELOG.md, run `npm version <patch|minor|major> --no-git-tag-version`,
-# and merge the pull request. This workflow then compares package.json's version with what npm has
-# (scripts/release.mjs plan). If it is new, it runs the tests, publishes with provenance, then creates the
-# v<version> tag and a GitHub Release whose notes are that CHANGELOG section. Re-running a failed run (or running
-# it by hand from the Actions tab) finishes whatever is left, so a failed step does not need a new version.
+# To release: add a "## [x.y.z]" section to CHANGELOG.md, run `npm version <patch|minor|major> --no-git-tag-version`,
+# and merge. Re-running a failed run finishes whatever is left, so a failed step does not need a new version.
 #
-# Until the package exists on npm and the NPM_TOKEN repository secret is set, the npm step is skipped with a
-# notice and the run stays green: the GitHub Release is still made. Add the secret and run this workflow from
-# the Actions tab to publish.
+# Until the package is on npm and NPM_TOKEN is set, the npm step is skipped with a notice and the Release is still made.
+# Tags and releases made with GITHUB_TOKEN do not start other workflow runs, so nothing publishes twice.
 #
-# Tags and releases made with GITHUB_TOKEN do not start other workflow runs (GitHub documents this under
-# "Triggering a workflow from a workflow"), and this workflow has no tag trigger, so nothing publishes twice.
-#
-# npm auth, in this order, with no edit needed to switch:
-#   1. The repository secret NPM_TOKEN, when it exists: a granular token with publish rights on worktree-preview
-#      and bypass 2FA on.
-#   2. Otherwise npm trusted publishing over OIDC. One-time setup on npmjs.com, after the first publish: the
-#      package's Settings > Trusted publisher > GitHub Actions, repository kd-011/worktree-preview, workflow
-#      filename publish.yml. It needs npm 11.5.1 or later (installed below) and `id-token: write`.
-# Provenance needs the repository to stay public.
+# npm auth is NPM_TOKEN when it exists (a granular token with publish rights and bypass 2FA), otherwise trusted
+# publishing over OIDC. OIDC needs one-time setup on npmjs.com after the first publish (Trusted publisher: this
+# repository, publish.yml), npm 11.5.1 or later and `id-token: write`. Provenance needs the repository to stay public.
 name: publish
 
 on:

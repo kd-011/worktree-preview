@@ -9,12 +9,12 @@
           "specs": [
             "package.json"
           ],
-          "head": "0ca092802e1f7b0e7f69a75053fac063347d1a52",
+          "head": "686f9ae3ae49d6bb32b704651cbb9e6c92494f2e",
           "files": {
             "package.json": {
               "path": "package.json",
-              "blob": "2448e29f32811fb5e622db49a4b3411c4dde64b3",
-              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c"
+              "blob": "ccb3412d0f4ef024b8929c9b8eee3417d3c0857b",
+              "commit": "686f9ae3ae49d6bb32b704651cbb9e6c92494f2e"
             }
           }
         },
@@ -24,12 +24,12 @@
           "specs": [
             "package.json:8-11"
           ],
-          "head": "0ca092802e1f7b0e7f69a75053fac063347d1a52",
+          "head": "686f9ae3ae49d6bb32b704651cbb9e6c92494f2e",
           "files": {
             "package.json": {
               "path": "package.json",
-              "blob": "2448e29f32811fb5e622db49a4b3411c4dde64b3",
-              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "blob": "ccb3412d0f4ef024b8929c9b8eee3417d3c0857b",
+              "commit": "686f9ae3ae49d6bb32b704651cbb9e6c92494f2e",
               "range": {
                 "start": 8,
                 "end": 11,
@@ -42,18 +42,29 @@
           "text": "The command to run is `--cmd`, then `cmd` in the config file, then a detected one, and with none of those `wtp up` exits with a usage error.",
           "line": 16,
           "specs": [
-            "src/commands/up.js:84-90"
+            "src/commands/up.js:87-92",
+            "src/commands/up.js:279"
           ],
-          "head": "0ca092802e1f7b0e7f69a75053fac063347d1a52",
+          "head": "686f9ae3ae49d6bb32b704651cbb9e6c92494f2e",
           "files": {
             "src/commands/up.js": {
               "path": "src/commands/up.js",
-              "blob": "98e00944f9f613dba9e75b2002a2ca7db7e3d117",
-              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "blob": "7b4f0d1f6b054ce55359f50189c2590266cb3e47",
+              "commit": "686f9ae3ae49d6bb32b704651cbb9e6c92494f2e",
               "range": {
-                "start": 84,
-                "end": 90,
-                "hash": "3dee11173097d01c64c4eba7a12129fea41b0758"
+                "start": 87,
+                "end": 92,
+                "hash": "29cf66299074838c5a369d805d2bfde97ab8f52b"
+              }
+            },
+            "src/commands/up.js:279-279": {
+              "path": "src/commands/up.js",
+              "blob": "7b4f0d1f6b054ce55359f50189c2590266cb3e47",
+              "commit": "686f9ae3ae49d6bb32b704651cbb9e6c92494f2e",
+              "range": {
+                "start": 279,
+                "end": 279,
+                "hash": "c5004de1cd0a5df9c9fddb8c985c09994ed55077"
               }
             }
           }
@@ -62,18 +73,29 @@
           "text": "A `dev` script in `package.json` is run with the package manager its lockfile implies, and a root `index.html` falls back to the built-in static server.",
           "line": 17,
           "specs": [
-            "src/detect.js:50-75"
+            "src/detect.js:56-62",
+            "src/detect.js:79-102"
           ],
-          "head": "0ca092802e1f7b0e7f69a75053fac063347d1a52",
+          "head": "686f9ae3ae49d6bb32b704651cbb9e6c92494f2e",
           "files": {
             "src/detect.js": {
               "path": "src/detect.js",
-              "blob": "62a792555f79e5d1925c3a92645ac9693cb0980c",
-              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "blob": "54d2520b876096351ac9a49fff1aa86facd6e43d",
+              "commit": "686f9ae3ae49d6bb32b704651cbb9e6c92494f2e",
               "range": {
-                "start": 50,
-                "end": 75,
-                "hash": "e59fcb76ff2c867817d884830aff369d46d1d52f"
+                "start": 56,
+                "end": 62,
+                "hash": "06b23a05c33f85633b8fd43ac455e16ee3746921"
+              }
+            },
+            "src/detect.js:79-102": {
+              "path": "src/detect.js",
+              "blob": "54d2520b876096351ac9a49fff1aa86facd6e43d",
+              "commit": "686f9ae3ae49d6bb32b704651cbb9e6c92494f2e",
+              "range": {
+                "start": 79,
+                "end": 102,
+                "hash": "296a41ebec9c91e67cd40784e0862fab7860478e"
               }
             }
           }
@@ -85,22 +107,22 @@
             "src/detect.js:8",
             "src/detect.js:32"
           ],
-          "head": "0ca092802e1f7b0e7f69a75053fac063347d1a52",
+          "head": "686f9ae3ae49d6bb32b704651cbb9e6c92494f2e",
           "files": {
             "src/detect.js": {
               "path": "src/detect.js",
-              "blob": "62a792555f79e5d1925c3a92645ac9693cb0980c",
-              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "blob": "54d2520b876096351ac9a49fff1aa86facd6e43d",
+              "commit": "686f9ae3ae49d6bb32b704651cbb9e6c92494f2e",
               "range": {
                 "start": 8,
                 "end": 8,
-                "hash": "158cc09a6e46af360a3976d539fda3b45c6edd12"
+                "hash": "f6f7f6e4175452fb64484f9f4d8446a9fc0ca5e9"
               }
             },
             "src/detect.js:32-32": {
               "path": "src/detect.js",
-              "blob": "62a792555f79e5d1925c3a92645ac9693cb0980c",
-              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "blob": "54d2520b876096351ac9a49fff1aa86facd6e43d",
+              "commit": "686f9ae3ae49d6bb32b704651cbb9e6c92494f2e",
               "range": {
                 "start": 32,
                 "end": 32,
@@ -116,12 +138,12 @@
             "src/ports.js:5",
             "src/ports.js:17-19"
           ],
-          "head": "0ca092802e1f7b0e7f69a75053fac063347d1a52",
+          "head": "686f9ae3ae49d6bb32b704651cbb9e6c92494f2e",
           "files": {
             "src/ports.js": {
               "path": "src/ports.js",
               "blob": "6bd92fc421f2e53ebccef0acb48e4692398cbe60",
-              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "commit": "17bb0bfe2908930071a47ef36936eb745533dcbe",
               "range": {
                 "start": 5,
                 "end": 5,
@@ -131,7 +153,7 @@
             "src/ports.js:17-19": {
               "path": "src/ports.js",
               "blob": "6bd92fc421f2e53ebccef0acb48e4692398cbe60",
-              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "commit": "17bb0bfe2908930071a47ef36936eb745533dcbe",
               "range": {
                 "start": 17,
                 "end": 19,
@@ -146,12 +168,12 @@
           "specs": [
             "src/ports.js:25-29"
           ],
-          "head": "0ca092802e1f7b0e7f69a75053fac063347d1a52",
+          "head": "686f9ae3ae49d6bb32b704651cbb9e6c92494f2e",
           "files": {
             "src/ports.js": {
               "path": "src/ports.js",
               "blob": "6bd92fc421f2e53ebccef0acb48e4692398cbe60",
-              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "commit": "17bb0bfe2908930071a47ef36936eb745533dcbe",
               "range": {
                 "start": 25,
                 "end": 29,
@@ -164,17 +186,17 @@
           "text": "An explicit `--port` that is taken fails instead of shifting to another port.",
           "line": 21,
           "specs": [
-            "src/commands/up.js:98-108"
+            "src/commands/up.js:100-110"
           ],
-          "head": "0ca092802e1f7b0e7f69a75053fac063347d1a52",
+          "head": "686f9ae3ae49d6bb32b704651cbb9e6c92494f2e",
           "files": {
             "src/commands/up.js": {
               "path": "src/commands/up.js",
-              "blob": "98e00944f9f613dba9e75b2002a2ca7db7e3d117",
-              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "blob": "7b4f0d1f6b054ce55359f50189c2590266cb3e47",
+              "commit": "686f9ae3ae49d6bb32b704651cbb9e6c92494f2e",
               "range": {
-                "start": 98,
-                "end": 108,
+                "start": 100,
+                "end": 110,
                 "hash": "5d66786c2c9e9dac8e12d9db4d49211a2b0b9f39"
               }
             }
@@ -187,12 +209,12 @@
             "src/ready.js:9-12",
             "src/ready.js:25"
           ],
-          "head": "0ca092802e1f7b0e7f69a75053fac063347d1a52",
+          "head": "686f9ae3ae49d6bb32b704651cbb9e6c92494f2e",
           "files": {
             "src/ready.js": {
               "path": "src/ready.js",
               "blob": "ed321dfbc3c88d65acf05a0f3e36cd71f848c6f5",
-              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "commit": "17bb0bfe2908930071a47ef36936eb745533dcbe",
               "range": {
                 "start": 9,
                 "end": 12,
@@ -202,7 +224,7 @@
             "src/ready.js:25-25": {
               "path": "src/ready.js",
               "blob": "ed321dfbc3c88d65acf05a0f3e36cd71f848c6f5",
-              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "commit": "17bb0bfe2908930071a47ef36936eb745533dcbe",
               "range": {
                 "start": 25,
                 "end": 25,
@@ -215,28 +237,28 @@
           "text": "Stopping a preview sends SIGTERM to its whole process group, then SIGKILL after a grace period that defaults to 5000 ms.",
           "line": 26,
           "specs": [
-            "src/proc.js:18-22",
-            "src/proc.js:150-159"
+            "src/proc.js:16-20",
+            "src/proc.js:148-157"
           ],
-          "head": "0ca092802e1f7b0e7f69a75053fac063347d1a52",
+          "head": "686f9ae3ae49d6bb32b704651cbb9e6c92494f2e",
           "files": {
             "src/proc.js": {
               "path": "src/proc.js",
-              "blob": "847fef9c7e3a76aeeae6391212c95dc274de367b",
-              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "blob": "2b3d2c6dca417e75d493dff1903dced1c48c8d35",
+              "commit": "0dd9e1c396f01c331709041d9201758a0503ceef",
               "range": {
-                "start": 18,
-                "end": 22,
+                "start": 16,
+                "end": 20,
                 "hash": "fab1590d4538d431bdd2a45240c8f36cc8a00975"
               }
             },
-            "src/proc.js:150-159": {
+            "src/proc.js:148-157": {
               "path": "src/proc.js",
-              "blob": "847fef9c7e3a76aeeae6391212c95dc274de367b",
-              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "blob": "2b3d2c6dca417e75d493dff1903dced1c48c8d35",
+              "commit": "0dd9e1c396f01c331709041d9201758a0503ceef",
               "range": {
-                "start": 150,
-                "end": 159,
+                "start": 148,
+                "end": 157,
                 "hash": "c9e391783c22ac7051889e7e89c885139430f9fa"
               }
             }
@@ -246,28 +268,28 @@
           "text": "A signal goes out only if the recorded start time, command line and process group match, or the leader is gone and its group still has members.",
           "line": 27,
           "specs": [
-            "src/proc.js:117-127",
-            "src/proc.js:164-167"
+            "src/proc.js:115-125",
+            "src/proc.js:162-165"
           ],
-          "head": "0ca092802e1f7b0e7f69a75053fac063347d1a52",
+          "head": "686f9ae3ae49d6bb32b704651cbb9e6c92494f2e",
           "files": {
             "src/proc.js": {
               "path": "src/proc.js",
-              "blob": "847fef9c7e3a76aeeae6391212c95dc274de367b",
-              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "blob": "2b3d2c6dca417e75d493dff1903dced1c48c8d35",
+              "commit": "0dd9e1c396f01c331709041d9201758a0503ceef",
               "range": {
-                "start": 117,
-                "end": 127,
+                "start": 115,
+                "end": 125,
                 "hash": "842ef4c8db07fb5629bfdccd9a0e951579ec4d84"
               }
             },
-            "src/proc.js:164-167": {
+            "src/proc.js:162-165": {
               "path": "src/proc.js",
-              "blob": "847fef9c7e3a76aeeae6391212c95dc274de367b",
-              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "blob": "2b3d2c6dca417e75d493dff1903dced1c48c8d35",
+              "commit": "0dd9e1c396f01c331709041d9201758a0503ceef",
               "range": {
-                "start": 164,
-                "end": 167,
+                "start": 162,
+                "end": 165,
                 "hash": "eb54c7fec18c617258b6bd115c8294116e737695"
               }
             }
@@ -279,12 +301,12 @@
           "specs": [
             "src/static-server.js:68-83"
           ],
-          "head": "0ca092802e1f7b0e7f69a75053fac063347d1a52",
+          "head": "686f9ae3ae49d6bb32b704651cbb9e6c92494f2e",
           "files": {
             "src/static-server.js": {
               "path": "src/static-server.js",
               "blob": "7cf27846008b5afdbf7c88d21d1d44c109d75a0b",
-              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "commit": "17bb0bfe2908930071a47ef36936eb745533dcbe",
               "range": {
                 "start": 68,
                 "end": 83,
@@ -301,12 +323,12 @@
             "src/state.js:27-28",
             "src/state.js:70"
           ],
-          "head": "0ca092802e1f7b0e7f69a75053fac063347d1a52",
+          "head": "686f9ae3ae49d6bb32b704651cbb9e6c92494f2e",
           "files": {
             "src/state.js": {
               "path": "src/state.js",
               "blob": "73302c3aa202da832441c4e1cca97d4264a4b3c5",
-              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "commit": "17bb0bfe2908930071a47ef36936eb745533dcbe",
               "range": {
                 "start": 11,
                 "end": 15,
@@ -316,7 +338,7 @@
             "src/state.js:27-28": {
               "path": "src/state.js",
               "blob": "73302c3aa202da832441c4e1cca97d4264a4b3c5",
-              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "commit": "17bb0bfe2908930071a47ef36936eb745533dcbe",
               "range": {
                 "start": 27,
                 "end": 28,
@@ -326,7 +348,7 @@
             "src/state.js:70-70": {
               "path": "src/state.js",
               "blob": "73302c3aa202da832441c4e1cca97d4264a4b3c5",
-              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "commit": "17bb0bfe2908930071a47ef36936eb745533dcbe",
               "range": {
                 "start": 70,
                 "end": 70,
@@ -341,12 +363,12 @@
           "specs": [
             "src/errors.js:1"
           ],
-          "head": "0ca092802e1f7b0e7f69a75053fac063347d1a52",
+          "head": "686f9ae3ae49d6bb32b704651cbb9e6c92494f2e",
           "files": {
             "src/errors.js": {
               "path": "src/errors.js",
               "blob": "af1839bfff02f9ef578dca564489c11f3ca5fed0",
-              "commit": "945341f6c3ec450982c72fd42319cb4c4abb551c",
+              "commit": "17bb0bfe2908930071a47ef36936eb745533dcbe",
               "range": {
                 "start": 1,
                 "end": 1,
@@ -362,12 +384,12 @@
             ".github/workflows/ci.yml:3-11",
             ".github/workflows/ci.yml:24"
           ],
-          "head": "0ca092802e1f7b0e7f69a75053fac063347d1a52",
+          "head": "686f9ae3ae49d6bb32b704651cbb9e6c92494f2e",
           "files": {
             ".github/workflows/ci.yml": {
               "path": ".github/workflows/ci.yml",
               "blob": "e361a6f6e095267f18352020bd1ae54770313d9d",
-              "commit": "0ca092802e1f7b0e7f69a75053fac063347d1a52",
+              "commit": "725b60e08c38533c0ed37cadccb0f5aa950e812e",
               "range": {
                 "start": 3,
                 "end": 11,
@@ -377,7 +399,7 @@
             ".github/workflows/ci.yml:24-24": {
               "path": ".github/workflows/ci.yml",
               "blob": "e361a6f6e095267f18352020bd1ae54770313d9d",
-              "commit": "0ca092802e1f7b0e7f69a75053fac063347d1a52",
+              "commit": "725b60e08c38533c0ed37cadccb0f5aa950e812e",
               "range": {
                 "start": 24,
                 "end": 24,
@@ -387,8 +409,8 @@
           }
         }
       },
-      "pinnedAt": "2026-11-02T15:29:01.596Z",
-      "head": "0ca092802e1f7b0e7f69a75053fac063347d1a52"
+      "pinnedAt": "2026-11-03T07:44:31.758Z",
+      "head": "686f9ae3ae49d6bb32b704651cbb9e6c92494f2e"
     }
   }
 }

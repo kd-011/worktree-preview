@@ -16,7 +16,7 @@ worktree-preview starts a server in a git worktree, records it, and later signal
 
 ## What is not a vulnerability
 
-`wtp up` runs the command named by `--cmd`, `.worktree-preview.json` or the `dev` script in `package.json`, with your permissions and no confirmation, exactly like `npm run dev`. The README says so. The risk is pointing it at a checkout you do not trust. That is documented, not guarded.
+`wtp up` runs the command named by `--cmd`, `.worktree-preview.json` or the `dev` script in `package.json`, with your permissions and no confirmation, exactly like `npm run dev`. The README says so. The risk is pointing it at a checkout you do not trust, and `wtp` has no guard against that.
 
 ## Supported versions
 

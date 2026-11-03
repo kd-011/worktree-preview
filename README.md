@@ -71,7 +71,7 @@ I looked for what else exists before writing this section. Facts come from each 
 - [worktrunk](https://github.com/max-sixty/worktrunk) is a Rust CLI that manages the worktrees themselves (create, switch, merge, hooks) and has a `hash_port` template filter for per-worktree ports. Pick it for the worktree workflow. It does not replace a process registry, and the two can be used together.
 - [worktree-compose](https://github.com/mostafasudo/worktree-compose) and [dtools](https://github.com/DylanSharp/dtools) give each worktree its own ports for Docker Compose stacks. Pick those if your app runs in containers.
 
-What `wtp` adds is a registry of what it started and a teardown that is careful: it signals the whole process group, and only after checking that the recorded pid, start time and command line still match. It never kills by process name. `wtp ls --json` and `wtp up --json` are meant for scripts and agents.
+`wtp` adds a registry of what it started and a careful teardown: it signals the whole process group, and only after checking that the recorded pid, start time and command line still match. It never kills by process name. `wtp ls --json` and `wtp up --json` are for scripts and agents.
 
 ## When not to use it
 

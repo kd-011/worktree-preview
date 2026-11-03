@@ -1,5 +1,3 @@
-// Process inspection and group signalling.
-//
 // The rule everything else relies on: a registry entry only ever authorises a
 // signal when the pid it names still has the start time, command line and
 // process group that were recorded when we spawned it. A recycled pid fails

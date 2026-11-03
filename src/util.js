@@ -3,7 +3,6 @@ import path from 'node:path';
 
 export const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-/** Quote a string for POSIX sh. */
 export function shq(s) {
   return `'${String(s).replaceAll("'", "'\\''")}'`;
 }
