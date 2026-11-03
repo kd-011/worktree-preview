@@ -125,7 +125,7 @@ test('hygiene files and templates exist, and the package version has a changelog
   assert.match(sec, /private vulnerability reporting/i);
   assert.doesNotMatch(sec, /[\w.+-]+@[\w-]+\.[\w.]+/, 'no email address in SECURITY.md');
   const { version } = JSON.parse(read('package.json'));
-  assert.match(read('CHANGELOG.md'), new RegExp(`^## ${version.replaceAll('.', '\\.')}\\b`, 'm'));
+  assert.match(read('CHANGELOG.md'), new RegExp(`^## \\[?${version.replaceAll('.', '\\.')}\\b`, 'm'));
 });
 
 test('social preview is a 1280x640 PNG', () => {

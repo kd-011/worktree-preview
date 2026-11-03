@@ -1,6 +1,6 @@
 {
   "name": "worktree-preview",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Serve any git worktree on its own free port with one command, remember it, and tear it down cleanly.",
   "type": "module",
   "license": "MIT",
@@ -25,11 +25,24 @@
   "keywords": [
     "git",
     "worktree",
+    "git-worktree",
     "preview",
     "dev-server",
     "port",
-    "cli"
+    "cli",
+    "ai-agents"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://github.com/kd-011/worktree-preview#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kd-011/worktree-preview.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kd-011/worktree-preview/issues"
+  },
   "scripts": {
     "test": "node --test"
   }

@@ -12,6 +12,7 @@ Commands:
                        --cmd "..."   command to run (overrides config and detection)
                        --name X      name for the preview (default: directory name)
                        --wait SECS   how long to wait for the server (default 60)
+                       --install     run the lockfile's install first if node_modules is missing
                        --open        open the URL in a browser
                        --json        print {name,url,port,pid,log,path,branch}
   ls [--json]        List previews: name, branch, port, pid, uptime, url, state.
@@ -34,7 +35,7 @@ Alias: wtp = worktree-preview. Linux and macOS only.
 const COMMON = { help: { type: 'boolean', short: 'h' } };
 
 const SPECS = {
-  up: { port: { type: 'string' }, cmd: { type: 'string' }, name: { type: 'string' }, wait: { type: 'string' }, open: { type: 'boolean' }, json: { type: 'boolean' } },
+  up: { port: { type: 'string' }, cmd: { type: 'string' }, name: { type: 'string' }, wait: { type: 'string' }, open: { type: 'boolean' }, install: { type: 'boolean' }, json: { type: 'boolean' } },
   ls: { json: { type: 'boolean' } },
   logs: { follow: { type: 'boolean', short: 'f' }, lines: { type: 'string', short: 'n' } },
   down: { all: { type: 'boolean' } },
@@ -94,6 +95,7 @@ export async function main(argv) {
         name: values.name,
         wait: values.wait === undefined ? undefined : intOption(values.wait, '--wait', { min: 1, max: 86400 }),
         open: values.open,
+        install: values.install,
         json: values.json,
       });
       return EXIT.OK;

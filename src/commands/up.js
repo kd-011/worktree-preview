@@ -1,8 +1,9 @@
 import { spawn } from 'node:child_process';
 import fs from 'node:fs';
-import { CONFIG_FILE, detectCommand, loadConfig } from '../detect.js';
+import { CONFIG_FILE, depsMissing, detectCommand, installCommand, loadConfig } from '../detect.js';
 import { EXIT, WtpError } from '../errors.js';
 import { branchOf, worktreeInfo } from '../git.js';
+import { runInstall } from '../install.js';
 import { isBindable, portCandidates, rangeFromEnv } from '../ports.js';
 import { checkIdentity, readProcess, stopEntry } from '../proc.js';
 import { isReady, probe } from '../ready.js';
@@ -11,6 +12,7 @@ import { NAME_RE, defaultName, hash, sleep } from '../util.js';
 
 const SIGNAL_EXIT = { SIGHUP: 129, SIGINT: 130, SIGTERM: 143 };
 const TAIL_LINES = 20;
+const NODE_CMD = /^\s*(?:npm|npx|pnpm|yarn|bun|node)\b/;
 
 export function tailLines(file, n) {
   let text = '';
@@ -82,7 +84,7 @@ async function decide(store, ctx) {
   const existing = live.find((e) => e.path === root);
   if (existing) return { kind: 'existing', entry: existing };
 
-  const cmd = opts.cmd ?? config.cmd ?? detectCommand(root)?.cmd;
+  const cmd = ctx.command?.cmd;
   if (!cmd) {
     throw new WtpError(
       `nothing to run in ${root}: pass --cmd "...", add a ${CONFIG_FILE} with a "cmd", add a "dev" script to package.json, or add an index.html`,
@@ -253,7 +255,8 @@ export async function up(opts) {
     throw new WtpError(`invalid --name "${opts.name}": use lowercase letters, digits, ".", "_" and "-"`, EXIT.USAGE);
   }
   const waitSeconds = opts.wait ?? config.ready_timeout ?? 60;
-  const deadline = Date.now() + waitSeconds * 1000;
+  // Restarted after any install, so a slow install does not eat the time the server gets to become ready.
+  let deadline = Date.now() + waitSeconds * 1000;
   const store = new Store();
   store.ensure();
 
@@ -273,9 +276,24 @@ export async function up(opts) {
   const interruptError = () => new WtpError(`interrupted by ${interrupted}; the preview that was starting has been stopped`, SIGNAL_EXIT[interrupted]);
 
   try {
+    const command = opts.cmd ? { cmd: opts.cmd } : config.cmd ? { cmd: config.cmd } : detectCommand(info.root);
+    if (command?.note) say(command.note);
+    if (command && depsMissing(info.root)) {
+      if (opts.install || config.install) {
+        const cmd = installCommand(info.root);
+        say(`no node_modules in ${info.root}, running: ${cmd}`);
+        if (!(await runInstall(cmd, info.root, ac.signal))) throw interruptError();
+        deadline = Date.now() + waitSeconds * 1000;
+      } else if (command.source === 'package.json' || NODE_CMD.test(command.cmd)) {
+        say(
+          `no node_modules in ${info.root}. If the server fails to start, run ${installCommand(info.root)} there, ` +
+            `or use wtp up --install (or "install": true in ${CONFIG_FILE}).`,
+        );
+      }
+    }
     for (;;) {
       const decision = await store.withLock(async () => {
-        const d = await decide(store, { root: info.root, branch: info.branch, opts, config, isInterrupted, interruptError });
+        const d = await decide(store, { root: info.root, branch: info.branch, opts, config, command, isInterrupted, interruptError });
         if (d.kind === 'started') d.entry = await register(store, d);
         return d;
       });

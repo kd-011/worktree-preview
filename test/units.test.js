@@ -54,7 +54,7 @@ describe('command detection', () => {
     for (const [lock, cmd] of cases) {
       fs.rmSync(dir, { recursive: true, force: true });
       fs.mkdirSync(dir);
-      pkg({ dev: 'vite' });
+      pkg({ dev: 'node server.js' });
       if (lock) put(lock);
       assert.deepEqual(detectCommand(dir), { cmd, source: 'package.json' }, String(lock));
     }
@@ -89,12 +89,12 @@ describe('config file', () => {
   afterEach(() => fs.rmSync(dir, { recursive: true, force: true }));
 
   it('is optional and has sensible defaults', () => {
-    assert.deepEqual(loadConfig(dir), { cmd: undefined, port_env: 'PORT', ready_path: '/', ready_timeout: undefined });
+    assert.deepEqual(loadConfig(dir), { cmd: undefined, port_env: 'PORT', ready_path: '/', ready_timeout: undefined, install: false });
   });
 
-  it('reads all four keys', () => {
-    fs.writeFileSync(path.join(dir, '.worktree-preview.json'), JSON.stringify({ cmd: 'x', port_env: 'P', ready_path: '/h', ready_timeout: 9 }));
-    assert.deepEqual(loadConfig(dir), { cmd: 'x', port_env: 'P', ready_path: '/h', ready_timeout: 9 });
+  it('reads all five keys', () => {
+    fs.writeFileSync(path.join(dir, '.worktree-preview.json'), JSON.stringify({ cmd: 'x', port_env: 'P', ready_path: '/h', ready_timeout: 9, install: true }));
+    assert.deepEqual(loadConfig(dir), { cmd: 'x', port_env: 'P', ready_path: '/h', ready_timeout: 9, install: true });
   });
 
   it('rejects wrong types and unknown keys with a config error', () => {
