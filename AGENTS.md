@@ -54,3 +54,10 @@ The doc index is docs/README.md. Read docs/ARCHITECTURE.md before changing struc
 
 - That dossier-scribe v0.1.0 cannot read `path#key` citations. It is taken from that tool's own changelog for 0.2.0, not from anything in this repo.
 - Behaviour on macOS beyond what CI covers, and the yarn 2+ and bun install commands against the real tools: the README says neither has been run by hand.
+
+## Generated facts
+
+<!-- auto:start -->
+- package: worktree-preview 0.2.0
+- npm scripts (1): test
+<!-- auto:end -->

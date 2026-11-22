@@ -79,3 +79,10 @@ flowchart LR
 ## Unverified
 
 - The macOS code path (`ps -o lstart=` parsing, `open`) was not run here. The README says it is covered by CI and not used daily.
+
+## Generated facts
+
+<!-- auto:start -->
+- package: worktree-preview 0.2.0
+- npm scripts (1): test
+<!-- auto:end -->
